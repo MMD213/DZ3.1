@@ -1,33 +1,64 @@
-public class Rectangle extends Shape{
-    private float width;
-    private float height;
-    public boolean equals(Object obj) {
+import java.util.Objects;
 
-        if (!(obj instanceof Rectangle)) return false;
+public class Rectangle extends Shape {
+    private int x1,x2,y1,y2;
 
-        Rectangle p = (Rectangle) obj;
-        return this.colour.equals(p.colour);
-    }
-    Rectangle(float x, float y, float width, float height){
-
-        super(x,y);
-        this.width = width;
-        this.height = height;
+    public Rectangle(String colour, int x1, int x2, int y1, int y2) {
+        super(colour);
+        this.x1 = x1;
+        this.x2 = x2;
+        this.y1 = y1;
+        this.y2 = y2;
     }
 
-    public float getPerimeter(){
-
-        return width * 2 + height * 2;
+    public int getX1() {
+        return x1;
     }
 
-    public float getArea(){
+    public void setX1(int x1) {
+        this.x1 = x1;
+    }
 
-        return width * height;
+    public int getX2() {
+        return x2;
+    }
+
+    public void setX2(int x2) {
+        this.x2 = x2;
+    }
+
+    public int getY1() {
+        return y1;
+    }
+
+    public void setY1(int y1) {
+        this.y1 = y1;
+    }
+
+    public int getY2() {
+        return y2;
+    }
+
+    public void setY2(int y2) {
+        this.y2 = y2;
     }
 
     @Override
-    public String draw() {
-        return null;
+    public void draw() {
+        System.out.println("Drawing Rectangle"+" "+getColour()+" "+getX1()+" "+getY1()+" "+getY1()+" "+getX2());
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+        Rectangle rectangle = (Rectangle) o;
+        return x1 == rectangle.x1 && x2 == rectangle.x2 && y1 == rectangle.y1 && y2 == rectangle.y2;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), x1, x2, y1, y2);
     }
 }
-

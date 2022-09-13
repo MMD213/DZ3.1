@@ -1,39 +1,56 @@
-public class Circle extends Shape{
-    float x;
-    float y;
-    private double r = 0;
-    public boolean equals(Object obj) {
+import java.util.Objects;
 
-        if (!(obj instanceof Circle)) return false;
+public class Circle extends Shape {
+    private int x,y,radius;
 
-        Circle p = (Circle) obj;
-        return this.colour.equals(p.colour);
-    }
-
-    public Circle(float x, float y) {
-        super(x, y);
+    public Circle(String colour,int x, int y, int radius) {
+        super(colour);
+        this.x = x;
+        this.y = y;
+        this.radius = radius;
     }
 
-    public void Circle(double r)
-    {
-        this.r=r;
+    public int getX() {
+        return x;
     }
-    public double getArea(){
-        double Area=0;
-        Area = r*r*Math.PI;
-        return Area;
+
+    public void setX(int x) {
+        this.x = x;
     }
-    public double getPerimeter(){
-        double Perimeter=0;
-        Perimeter = 2*r*Math.PI;
-        return  Perimeter;
+
+    public int getY() {
+        return y;
     }
-    public void printclassname() {
-        System.out.println("Класс Круг: площадь:"+getArea());
+
+    public void setY(int y) {
+        this.y = y;
+    }
+
+    public int getRadius() {
+        return radius;
+    }
+
+    public void setRadius(int radius) {
+        this.radius = radius;
     }
 
     @Override
-    public String draw() {
-        return null;
+    public void draw() {
+        System.out.println(" Drawing circle with "+" " +getColour()+" "+getX()+ " "+getY());
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+        Circle circle = (Circle) o;
+        return x == circle.x && y == circle.y && radius == circle.radius;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), x, y, radius);
     }
 }
+
