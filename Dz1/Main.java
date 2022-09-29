@@ -5,7 +5,9 @@ public class Main {
         Matrix matrix2 = new Matrix (2,2);
         Matrix matrix3,matrix4,matrix5;
 
+        System.out.println("Первая матрица");
         matrix1.out();
+        System.out.println("Вторая матрица");
         matrix2.out();
 
         System.out.println("Сложение матриц");
