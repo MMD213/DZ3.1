@@ -1,35 +1,23 @@
-import java.io.FileWriter;
-import java.io.IOException;
 public class Main {
-    public static void main(String[] args) throws IOException {
-        FileWriter fw = new FileWriter("matrix.txt");
+    public static void main(String[] args) {
 
-        Matrix a = new Matrix(4, 4);
-        a.fillRandom();
-        a.print("A (random filled matrix)");
-        a.toFile(fw, "A (random filled matrix)");
+        Matrix matrix1  = new Matrix (2,2);
+        Matrix matrix2 = new Matrix (2,2);
+        Matrix matrix3,matrix4,matrix5;
 
-        Matrix b = new Matrix(new double[][]{{1, 2, 1, 2}, {2, 1, 2, 1}, {1, 2, 1, 2}, {2, 1, 2, 1}});
-        b.print("B (manually filled matrix)");
-        b.toFile(fw, "B (manually filled matrix)");
+        matrix1.out();
+        matrix2.out();
 
-        Matrix c = a.add(b);
-        c.print("C = A + B");
-        c.toFile(fw, "C = A + B");
+        System.out.println("Сложение матриц");
+        matrix3 = matrix1.Sl(matrix2);
+        matrix3.out();
 
-        Matrix d = c.multiply(2);
-        d.print("D = C * 2");
-        d.toFile(fw, "D = C * 2");
+        System.out.println("Умножение первой матрицы на число 3");
+        matrix4 = matrix1.UMN(4);
+        matrix4.out();
 
-        Matrix m = c.divide(2);
-        m.print("M = C / 2");
-        m.toFile(fw, "M = C / 2");
-
-        Matrix e = c.multiply(d);
-        e.print("E = C * D");
-        e.toFile(fw, "E = C * D");
-
-        fw.close();
+        System.out.println("Умножение первой матрицы на вторую матрицу");
+        matrix5 = matrix1.matUMNmatr(matrix2);
+        matrix5.out();
     }
 }
-
