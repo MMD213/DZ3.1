@@ -1,56 +1,15 @@
-import java.util.Objects;
+import java.awt.*;
 
-public class Circle extends Shape {
-    private int x,y,radius;
+public class Circle extends Shape{
 
-    public Circle(String colour,int x, int y, int radius) {
-        super(colour);
-        this.x = x;
-        this.y = y;
-        this.radius = radius;
+    void get(int u, int i, int o, int p){
+        super.x = u;
+        super.y = i;
+        super.a = o;
+        super.b = p;
     }
-
-    public int getX() {
-        return x;
-    }
-
-    public void setX(int x) {
-        this.x = x;
-    }
-
-    public int getY() {
-        return y;
-    }
-
-    public void setY(int y) {
-        this.y = y;
-    }
-
-    public int getRadius() {
-        return radius;
-    }
-
-    public void setRadius(int radius) {
-        this.radius = radius;
-    }
-
     @Override
-    public void draw() {
-        System.out.println(" Drawing circle with "+" " +getColour()+" "+getX()+ " "+getY());
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        if (!super.equals(o)) return false;
-        Circle circle = (Circle) o;
-        return x == circle.x && y == circle.y && radius == circle.radius;
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(super.hashCode(), x, y, radius);
+    void draw(Graphics graphics, int x, int y, int a, int b) {
+        graphics.drawOval(x,y,a,b);
     }
 }
-
